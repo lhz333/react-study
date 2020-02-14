@@ -1,34 +1,12 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-// 定义组件的第二种方法，使用类继承React.Component
-class App extends React.Component {
-  render () {
-    console.log(this.props)
-    return (
-      <div>
-        <h1>{this.props.title}!!</h1>
-        <p>{this.props.desc}</p>
-      </div>
-    )
-  }
-}
+ReactDOM.render(<App />, document.getElementById('root'));
 
-// 类组件渲染的原理
-// const app = new App ({
-//   desc: "类组件是继承React.Component的",
-//   title: "类组件！"
-// }).render()
-
-// render是react dom提供的一个方法，这个方法通常只会用一次
-render (
-  <App desc="类组件是继承React.Component的" title="类组件！"/>,
-  document.querySelector('#root')
-)
-
-// 在React16之前，使用以下方式来创建类
-// React.createClass({
-//   render(){
-//     return <h1>xxx</h1>
-//   }
-// })
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: https://bit.ly/CRA-PWA
+serviceWorker.unregister();
