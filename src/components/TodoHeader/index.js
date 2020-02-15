@@ -1,9 +1,24 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default function TodoHeader() {
+export default function TodoHeader(props) {
+  console.log(props)
   return (
     <div>
-      <h1>待办事项列表</h1>
+      <h1>{props.title}</h1>
+      <p>{props.children}</p>
+      <p>{props.x + props.y}</p>
+      <p>{props.m + props.n}</p>
     </div>
   )
+}
+
+TodoHeader.propTypes ={
+  title: PropTypes.string.isRequired,
+  // 校验 希望x是数字类型且必传，但是传过来的值是字符串，所以在控制台会报错
+  x: PropTypes.number.isRequired
+}
+
+TodoHeader.defaultProps = {
+  title: '默认值'
 }
