@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react'
+import React, { Component } from 'react'
 
-export default function TodoItem() {
-  return (
-    // Fragment 相当于空标签
-    <Fragment>
-      <li>列表</li>
-      <li>啦啦啦</li>
-    </Fragment>
-  )
+export default class TodoItem extends Component {
+  render() {
+    return (
+    <li>{this.props.assignee} {this.props.title}：{this.props.isCompleted ? '完成': '未完成'}</li>
+    )
+  }
 }
+
