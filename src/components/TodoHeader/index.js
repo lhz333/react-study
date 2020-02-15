@@ -15,8 +15,7 @@ export default function TodoHeader(props) {
 
 TodoHeader.propTypes ={
   title: PropTypes.string.isRequired,
-  // 校验 希望x是数字类型且必传，但是传过来的值是字符串，所以在控制台会报错
-  x: PropTypes.number.isRequired
+  x: PropTypes.string.isRequired
 }
 
 TodoHeader.defaultProps = {
