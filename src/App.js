@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react'
 import {
   TodoHeader,
   TodoInput,
-  TodoList
+  TodoList,
+  Like
 } from './components'
 
 import './index.css'
@@ -27,7 +28,7 @@ export default class App extends Component {
       },{
         id: 2,
         title: '睡觉',
-        assignee: 'who',
+        assignee: 'nicai',
         isCompleted: false
       }]
     }
@@ -52,6 +53,7 @@ export default class App extends Component {
         <TodoInput btnText="ADD"/>
         <TodoList todos={this.state.todos}/>
         <h1>组件</h1>
+        <Like></Like>
       </Fragment>
     )
   }
