@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function TodoHeader(props) {
-  console.log(props)
+  // console.log(props)
   return (
     <div>
       <h1>{props.title}</h1>

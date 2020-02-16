@@ -63,7 +63,7 @@ export default class App extends Component {
 
   // 修改完成状态
   onCompletedChange = (id) => {
-    console.log('onCompletedChange', id)
+    // console.log('onCompletedChange', id)
     this.setState((prevProps)=>{
       return {
         todos: prevProps.todos.map(todo=>{

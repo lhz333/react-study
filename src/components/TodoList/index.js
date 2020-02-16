@@ -14,7 +14,7 @@ export default class TodoList extends Component {
     onCompletedChange: PropTypes.func
   }
   render() {
-    console.log(this.props.todos)
+    // console.log(this.props.todos)
     return (
       <ul className="abc">
         {this.props.todos.map(todo => {
