@@ -49,7 +49,7 @@ export default class App extends Component {
       // })
     })
 
-    // 如果想使用push 可以换一种方式 
+    // 如果想使用push 可以换一种方式
     const todoNews = [...this.state.todos]
     todoNews.push({
       id: Math.random(),
@@ -58,6 +58,21 @@ export default class App extends Component {
     })
     this.setState({
       todos: todoNews
+    })
+  }
+
+  // 修改完成状态
+  onCompletedChange = (id) => {
+    console.log('onCompletedChange', id)
+    this.setState((prevProps)=>{
+      return {
+        todos: prevProps.todos.map(todo=>{
+          if(todo.id === id){
+            todo.isCompleted = !todo.isCompleted
+          }
+          return todo
+        })
+      }
     })
   }
   render() {
@@ -78,7 +93,10 @@ export default class App extends Component {
           {this.state.desc}
         </TodoHeader>
         <TodoInput btnText="ADD" todo={this.addTodo} />
-        <TodoList todos={this.state.todos} />
+        <TodoList
+          todos={this.state.todos}
+          onCompletedChange={this.onCompletedChange}
+        />
         <h1>组件</h1>
         <Like></Like>
       </Fragment>
