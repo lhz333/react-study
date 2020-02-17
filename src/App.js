@@ -19,14 +19,12 @@ export default class App extends Component {
         {
           id: 1,
           title: '吃饭',
-          assignee: 'jenny',
-          isCompleted: true
+          completed: true
         },
         {
           id: 2,
           title: '睡觉',
-          assignee: 'nicai',
-          isCompleted: false
+          completed: false
         }
       ]
     }
@@ -39,13 +37,13 @@ export default class App extends Component {
       // todos: this.state.todos.push({
       //   id: Math.random(),
       //   title: todoTitle,
-      //   isCompleted: false
+      //   completed: false
       // })
       //2、使用这种方式添加新数据
       // todos: this.state.todos.concat({
       //   id: Math.random(),
       //   title: todoTitle,
-      //   isCompleted: false
+      //   completed: false
       // })
     })
 
@@ -54,7 +52,7 @@ export default class App extends Component {
     todoNews.push({
       id: Math.random(),
       title: todoTitle,
-      isCompleted: false
+      completed: false
     })
     this.setState({
       todos: todoNews
@@ -62,13 +60,13 @@ export default class App extends Component {
   }
 
   // 修改完成状态
-  onCompletedChange = (id) => {
+  onCompletedChange = id => {
     // console.log('onCompletedChange', id)
-    this.setState((prevProps)=>{
+    this.setState(prevProps => {
       return {
-        todos: prevProps.todos.map(todo=>{
-          if(todo.id === id){
-            todo.isCompleted = !todo.isCompleted
+        todos: prevProps.todos.map(todo => {
+          if (todo.id === id) {
+            todo.completed = !todo.completed
           }
           return todo
         })

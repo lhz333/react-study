@@ -13,7 +13,7 @@ export default class TodoItem extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.isCompleted !== this.props.isCompleted
+    return nextProps.completed !== this.props.completed
   }
 
   render() {
@@ -22,11 +22,10 @@ export default class TodoItem extends Component {
       <li>
         <input
           type="checkbox"
-          checked={this.props.isCompleted}
+          checked={this.props.completed}
           onChange={this.handleChecked}
         />
-        {this.props.assignee} {this.props.title}：
-        {this.props.isCompleted ? '已完成' : '未完成'}
+        {this.props.title}：{this.props.completed ? '已完成' : '未完成'}
       </li>
     )
   }
@@ -54,11 +53,10 @@ export default class TodoItem extends Component {
 //       <li>
 //         <input
 //           type="checkbox"
-//           checked={this.props.isCompleted}
+//           checked={this.props.completed}
 //           onChange={this.handleChecked}
 //         />
-//         {this.props.assignee} {this.props.title}：
-//         {this.props.isCompleted ? '已完成' : '未完成'}
+//         {this.props.title}：{this.props.completed ? '已完成' : '未完成'}
 //       </li>
 //     )
 //   }
