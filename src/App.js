@@ -3,6 +3,8 @@ import { TodoHeader, TodoInput, TodoList, Like } from './components'
 
 import './index.css'
 
+import { getTodos } from './services'
+
 export default class App extends Component {
   // state = {
   //   title: '待办事项列表'
@@ -15,20 +17,41 @@ export default class App extends Component {
       title: '待办事项列表',
       desc: <i>今日事今日毕</i>,
       artice: '<div><h1>文章标题</h1><i>作者</i></div>',
-      todos: [
-        {
-          id: 1,
-          title: '吃饭',
-          completed: true
-        },
-        {
-          id: 2,
-          title: '睡觉',
-          completed: false
-        }
-      ]
+      todos: [],
+      isLoading: false
     }
   }
+
+  getData = () => {
+    this.setState({
+      isLoading: true
+    })
+    getTodos()
+      .then(res => {
+        console.log(res.data)
+        if (res.status === 200) {
+          this.setState({
+            todos: res.data
+          })
+        } else {
+          // 处理错误
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      .finally(() => {
+        this.setState({
+          isLoading: false
+        })
+      })
+  }
+
+  // ajax请求接口
+  componentDidMount() {
+    this.getData()
+  }
+
   // 添加待办事项列表
   addTodo = todoTitle => {
     // console.log(todoTitle)
@@ -91,10 +114,16 @@ export default class App extends Component {
           {this.state.desc}
         </TodoHeader>
         <TodoInput btnText="ADD" todo={this.addTodo} />
-        <TodoList
-          todos={this.state.todos}
-          onCompletedChange={this.onCompletedChange}
-        />
+
+        {/* 条件渲染  */}
+        {this.state.isLoading ? (
+          <div>loading...</div>
+        ) : (
+          <TodoList
+            todos={this.state.todos}
+            onCompletedChange={this.onCompletedChange}
+          />
+        )}
         <h1>组件</h1>
         <Like></Like>
       </Fragment>
