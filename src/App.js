@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { TodoHeader, TodoInput, TodoList, Like } from './components'
+import { TodoHeader, TodoInput, TodoList, Like, Count } from './components'
 
 import './index.css'
 
@@ -99,6 +99,7 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
+        <Count></Count>
         {/* {
           this.state.artice
         }

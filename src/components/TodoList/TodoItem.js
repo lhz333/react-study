@@ -17,7 +17,7 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    console.log(`TodoItem ${this.props.title} render`)
+    // console.log(`TodoItem ${this.props.title} render`)
     return (
       <li>
         <input
