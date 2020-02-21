@@ -1,5 +1,13 @@
 import React, { Component, Fragment } from 'react'
-import { TodoHeader, TodoInput, TodoList, Like, Count } from './components'
+import {
+  TodoHeader,
+  TodoInput,
+  TodoList,
+  Like,
+  Count,
+  CountCopy
+} from './components'
+import { CounterProvider } from './components/counterStore'
 
 import './index.css'
 
@@ -28,7 +36,7 @@ export default class App extends Component {
     })
     getTodos()
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.status === 200) {
           this.setState({
             todos: res.data
@@ -100,6 +108,11 @@ export default class App extends Component {
     return (
       <Fragment>
         <Count></Count>
+        {/* 使用createContext */}
+        <h1>使用createContext：</h1>
+        <CounterProvider>
+          <CountCopy></CountCopy>
+        </CounterProvider>
         {/* {
           this.state.artice
         }
